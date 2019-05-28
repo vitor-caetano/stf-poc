@@ -64,3 +64,8 @@ PUBLIC_IP=$IP_BASE docker-compose up -d --build
 ```bash
 open "http://$IP_BASE"
 ```
+
+```bash
+docker-machine ssh base
+tce-load -wi usb-utils
+```
