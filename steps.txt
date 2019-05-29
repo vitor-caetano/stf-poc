@@ -1,0 +1,28 @@
+vangrant up
+vagrant ssh
+
+cd stf-poc
+
+# os containers ficam reiniciando porque o rethinkdb demora a ficar disponível
+# por isso paramos todos os containers inicialmente
+docker-compose stop
+
+# start somente do rethinkdb
+docker-compose up -d rethinkdb
+
+# aguardar o Server ready do log
+CX-0199:stf-poc vitor.pinto$ docker logs -f 8e8a5ef97d29
+...
+Listening for intracluster connections on port 29015
+Listening for client driver connections on port 28015
+Listening for administrative HTTP connections on port 8080
+Listening on cluster addresses: 127.0.0.1, 172.18.0.2
+Listening on driver addresses: 127.0.0.1, 172.18.0.2
+Listening on http addresses: 127.0.0.1, 172.18.0.2
+Server ready, "8e8a5ef97d29_fe7" d24eea67-ed95-4a7a-a33d-607a0580216f
+
+# se, for a primeira vez iniciar o migrate do db individualmente e verficar o log
+docker-compose up -d migrate
+
+# iniciar todos os serviços
+PUBLIC_IP=192.168.1.101 docker-compose up -d --build
