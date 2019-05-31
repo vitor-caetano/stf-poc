@@ -1,0 +1,41 @@
+https://scotch.io/tutorials/how-to-create-a-vagrant-base-box-from-an-existing-one
+http://www.gisremotesensing.com/2016/06/solution-vagrant-box-authentication.html
+
+======================================================
+CX-0199:vagrant vitor.pinto$ vagrant package --base "vagrant_default_1559085722394_28073" --output stf-poc.box
+==> vagrant_default_1559085722394_28073: Exporting VM...
+==> vagrant_default_1559085722394_28073: Compressing package to: /Users/vitor.pinto/vagrant/stf-poc.box
+
+CX-0199:vagrant vitor.pinto$ ls
+Vagrantfile					ubuntu-bionic-18.04-cloudimg-console.log
+stf-poc.box
+
+CX-0199:vagrant vitor.pinto$ ls -la
+total 2426016
+drwxr-xr-x   6 vitor.pinto  staff         192 May 31 10:35 .
+drwxr-xr-x+ 50 vitor.pinto  staff        1600 May 31 10:35 ..
+drwxr-xr-x   4 vitor.pinto  staff         128 May 21 13:54 .vagrant
+-rw-r--r--   1 vitor.pinto  staff         218 May 28 22:04 Vagrantfile
+-rw-r--r--   1 vitor.pinto  staff  1241056152 May 31 10:36 stf-poc.box
+-rw-------   1 vitor.pinto  staff       44641 May 31 10:17 ubuntu-bionic-18.04-cloudimg-console.log
+
+CX-0199:vagrant vitor.pinto$ vagrant box list
+ubuntu/bionic64 (virtualbox, 20190514.0.0)
+
+CX-0199:vagrant vitor.pinto$ vagrant box add stf-poc stf-poc.box
+==> box: Box file was not detected as metadata. Adding it directly...
+==> box: Adding box 'stf-poc' (v0) for provider:
+    box: Unpacking necessary files from: file:///Users/vitor.pinto/vagrant/stf-poc.box
+==> box: Successfully added box 'stf-poc' (v0) for 'virtualbox'!
+
+CX-0199:vagrant vitor.pinto$ vagrant box list
+stf-poc         (virtualbox, 0)
+ubuntu/bionic64 (virtualbox, 20190514.0.0)
+
+cd /Users/vitor.pinto/projects/stf-poc
+
+CX-0199:stf-poc vitor.pinto$ vagrant init stf-poc
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
