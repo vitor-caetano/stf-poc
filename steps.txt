@@ -1,6 +1,8 @@
 vangrant up
 vagrant ssh
 
+git clone
+
 cd stf-poc
 
 # os containers ficam reiniciando porque o rethinkdb demora a ficar disponível
