@@ -1,3 +1,4 @@
 .idea
 Oracle_VM_VirtualBox_Extension_Pack-6.0.8.vbox-extpack
 *.log
+*.box

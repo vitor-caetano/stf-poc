@@ -1,7 +1,13 @@
 vangrant up
 vagrant ssh
 
-git clone
+# install docker
+https://docs.docker.com/install/linux/docker-ce/ubuntu/
+
+# install docker-compose
+https://docs.docker.com/compose/install/
+
+git clone https://github.com/vitor-caetano/stf-poc
 
 cd stf-poc
 
